@@ -335,7 +335,7 @@ export function scoreQuiz(answers: Record<string, number>) {
   for (const q of QUIZ) {
     const idx = answers[q.id];
     if (idx === undefined) continue;
-    for (const sectorId of q.options[idx].sectors) {
+    for (const sectorId of q.options[idx]?.sectors ?? []) {
       scores[sectorId] = (scores[sectorId] ?? 0) + 1;
     }
   }
