@@ -6,12 +6,11 @@ import { Footer } from "@/components/Footer";
 import { JobCard } from "@/components/JobCard";
 import { JOBS, SECTORS } from "@/data/kenzya";
 
-type JobSearch = { q?: string };
+type JobSearch = { q?: string | undefined };
 
 export const Route = createFileRoute("/offres/")({
-  validateSearch: (search: Record<string, unknown>): JobSearch => ({
-    q: typeof search.q === "string" ? search.q : undefined,
-  }),
+  validateSearch: (search: Record<string, unknown>): JobSearch =>
+    typeof search["q"] === "string" ? { q: search["q"] } : {},
   head: () => ({
     meta: [
       { title: "Offres d'emploi en Côte d'Ivoire | KENZYA" },

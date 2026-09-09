@@ -59,7 +59,7 @@ function Home() {
             className="mt-8 flex max-w-2xl flex-col gap-3 rounded-2xl bg-card p-3 shadow-elevated sm:flex-row"
             onSubmit={(e) => {
               e.preventDefault();
-              navigate({ to: "/offres", search: { q: query || undefined } });
+              navigate({ to: "/offres", search: query ? { q: query } : {} });
             }}
           >
             <div className="flex flex-1 items-center gap-2 px-2">

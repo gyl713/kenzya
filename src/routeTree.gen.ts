@@ -10,12 +10,24 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as OrientationRouteImport } from './routes/orientation'
+import { Route as RecruteursRouteImport } from './routes/recruteurs'
 import { Route as OffresIndexRouteImport } from './routes/offres/index'
 import { Route as OffresJobIdRouteImport } from './routes/offres/$jobId'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OrientationRoute = OrientationRouteImport.update({
+  id: '/orientation',
+  path: '/orientation',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RecruteursRoute = RecruteursRouteImport.update({
+  id: '/recruteurs',
+  path: '/recruteurs',
   getParentRoute: () => rootRouteImport,
 } as any)
 const OffresIndexRoute = OffresIndexRouteImport.update({
@@ -31,30 +43,45 @@ const OffresJobIdRoute = OffresJobIdRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/orientation': typeof OrientationRoute
+  '/recruteurs': typeof RecruteursRoute
   '/offres/$jobId': typeof OffresJobIdRoute
   '/offres/': typeof OffresIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/orientation': typeof OrientationRoute
+  '/recruteurs': typeof RecruteursRoute
   '/offres/$jobId': typeof OffresJobIdRoute
   '/offres': typeof OffresIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/orientation': typeof OrientationRoute
+  '/recruteurs': typeof RecruteursRoute
   '/offres/$jobId': typeof OffresJobIdRoute
   '/offres/': typeof OffresIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/offres/$jobId' | '/offres/'
+  fullPaths:
+    '/' | '/orientation' | '/recruteurs' | '/offres/$jobId' | '/offres/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/offres/$jobId' | '/offres'
-  id: '__root__' | '/' | '/offres/$jobId' | '/offres/'
+  to: '/' | '/orientation' | '/recruteurs' | '/offres/$jobId' | '/offres'
+  id:
+    | '__root__'
+    | '/'
+    | '/orientation'
+    | '/recruteurs'
+    | '/offres/$jobId'
+    | '/offres/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  OrientationRoute: typeof OrientationRoute
+  RecruteursRoute: typeof RecruteursRoute
   OffresJobIdRoute: typeof OffresJobIdRoute
   OffresIndexRoute: typeof OffresIndexRoute
 }
@@ -66,6 +93,20 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/orientation': {
+      id: '/orientation'
+      path: '/orientation'
+      fullPath: '/orientation'
+      preLoaderRoute: typeof OrientationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/recruteurs': {
+      id: '/recruteurs'
+      path: '/recruteurs'
+      fullPath: '/recruteurs'
+      preLoaderRoute: typeof RecruteursRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/offres/': {
@@ -87,6 +128,8 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  OrientationRoute: OrientationRoute,
+  RecruteursRoute: RecruteursRoute,
   OffresJobIdRoute: OffresJobIdRoute,
   OffresIndexRoute: OffresIndexRoute,
 }
