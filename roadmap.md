@@ -16,3 +16,9 @@
 - Tests de compétences réels et vérification des certifications
 - Assistant IA (analyse de profil, écarts, amélioration de CV) via passerelle serveur
 - Suivi des retours utilisateurs et statistiques réelles
+
+## Comptes utilisateurs (demandé le 11/09)
+- [ ] Activer le backend Lovable Cloud
+- [ ] Création de compte + connexion (email/mot de passe et Google)
+- [ ] Choix du type de compte : candidat ou recruteur, stocké dans le profil
+- [ ] Espace connecté : le candidat voit son profil, le recruteur voit ses offres et le sourcing
