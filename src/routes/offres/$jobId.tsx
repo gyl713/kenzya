@@ -3,7 +3,9 @@ import { ArrowLeft, Building2, CalendarClock, MapPin } from "lucide-react";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { JobCard } from "@/components/JobCard";
+import { MatchScore } from "@/components/MatchScore";
 import { JOBS, formatSalary } from "@/data/kenzya";
+import { CANDIDATES } from "@/data/matching";
 
 export const Route = createFileRoute("/offres/$jobId")({
   loader: ({ params }) => {
