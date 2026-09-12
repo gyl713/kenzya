@@ -7,8 +7,12 @@ export function Footer() {
         <div className="md:col-span-2">
           <p className="font-display text-2xl font-bold">KENZYA</p>
           <p className="mt-3 max-w-sm text-sm opacity-80">
-            L'agrégateur d'offres d'emploi de Côte d'Ivoire. Toutes les offres du pays au même
-            endroit, plus une aide à l'orientation pour les nouveaux bacheliers.
+            Connecter les talents ivoiriens aux opportunités, avec des preuves plutôt que des
+            promesses : compétences démontrées, correspondances expliquées, sources affichées.
+          </p>
+          <p className="mt-3 max-w-sm text-xs opacity-70">
+            Chaque recommandation de KENZYA peut répondre à la question « sur quoi vous
+            basez-vous ? ».
           </p>
         </div>
         <div>
@@ -20,20 +24,29 @@ export function Footer() {
               <Link to="/offres">Chercher une offre</Link>
             </li>
             <li>
+              <Link to="/profil">Mon profil et mes preuves</Link>
+            </li>
+            <li>
               <Link to="/orientation">Test d'orientation</Link>
             </li>
           </ul>
         </div>
         <div>
           <p className="font-display text-sm font-semibold uppercase tracking-wide opacity-70">
-            Recruteurs
+            Recruteurs & transparence
           </p>
           <ul className="mt-3 space-y-2 text-sm opacity-90">
+            <li>
+              <Link to="/talents">Rechercher des talents</Link>
+            </li>
             <li>
               <Link to="/recruteurs">Publier une offre</Link>
             </li>
             <li>
-              <Link to="/recruteurs">Nos formules</Link>
+              <Link to="/marche">Données du marché</Link>
+            </li>
+            <li>
+              <Link to="/methode">Méthode et sources</Link>
             </li>
           </ul>
         </div>
