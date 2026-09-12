@@ -1,4 +1,5 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
+import { useState } from "react";
 import { ArrowLeft, Building2, CalendarClock, MapPin } from "lucide-react";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
@@ -35,6 +36,8 @@ export const Route = createFileRoute("/offres/$jobId")({
 function JobDetail() {
   const job = Route.useLoaderData();
   const similar = JOBS.filter((j) => j.sector === job.sector && j.id !== job.id).slice(0, 2);
+  const [profileId, setProfileId] = useState(CANDIDATES[0]!.id);
+  const profile = CANDIDATES.find((c) => c.id === profileId) ?? CANDIDATES[0]!;
 
   return (
     <div className="min-h-screen">
@@ -111,6 +114,27 @@ function JobDetail() {
           </button>
         </aside>
       </div>
+
+      <div className="mx-auto max-w-4xl space-y-4 px-4 pb-10">
+        <div className="flex flex-wrap items-center gap-2">
+          <span className="text-sm font-semibold text-primary">Comparer avec le profil de :</span>
+          {CANDIDATES.map((c) => (
+            <button
+              key={c.id}
+              onClick={() => setProfileId(c.id)}
+              className={`rounded-lg px-3 py-1.5 text-sm font-semibold transition-smooth ${
+                c.id === profile.id
+                  ? "bg-secondary text-secondary-foreground"
+                  : "border border-border text-muted-foreground hover:bg-muted"
+              }`}
+            >
+              {c.name}
+            </button>
+          ))}
+        </div>
+        <MatchScore profile={profile} job={job} />
+      </div>
+
 
       {similar.length > 0 && (
         <div className="mx-auto max-w-4xl px-4">
