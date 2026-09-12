@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AuthRouteImport } from './routes/auth'
 import { Route as MarcheRouteImport } from './routes/marche'
 import { Route as MethodeRouteImport } from './routes/methode'
 import { Route as OrientationRouteImport } from './routes/orientation'
@@ -22,6 +23,11 @@ import { Route as OffresJobIdRouteImport } from './routes/offres/$jobId'
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthRoute = AuthRouteImport.update({
+  id: '/auth',
+  path: '/auth',
   getParentRoute: () => rootRouteImport,
 } as any)
 const MarcheRoute = MarcheRouteImport.update({
@@ -67,6 +73,7 @@ const OffresJobIdRoute = OffresJobIdRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/auth': typeof AuthRoute
   '/marche': typeof MarcheRoute
   '/methode': typeof MethodeRoute
   '/orientation': typeof OrientationRoute
@@ -78,6 +85,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/auth': typeof AuthRoute
   '/marche': typeof MarcheRoute
   '/methode': typeof MethodeRoute
   '/orientation': typeof OrientationRoute
@@ -90,6 +98,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/auth': typeof AuthRoute
   '/marche': typeof MarcheRoute
   '/methode': typeof MethodeRoute
   '/orientation': typeof OrientationRoute
@@ -103,6 +112,7 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/auth'
     | '/marche'
     | '/methode'
     | '/orientation'
@@ -114,6 +124,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/auth'
     | '/marche'
     | '/methode'
     | '/orientation'
@@ -125,6 +136,7 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/auth'
     | '/marche'
     | '/methode'
     | '/orientation'
@@ -137,6 +149,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AuthRoute: typeof AuthRoute
   MarcheRoute: typeof MarcheRoute
   MethodeRoute: typeof MethodeRoute
   OrientationRoute: typeof OrientationRoute
@@ -154,6 +167,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/auth': {
+      id: '/auth'
+      path: '/auth'
+      fullPath: '/auth'
+      preLoaderRoute: typeof AuthRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/marche': {
@@ -217,6 +237,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AuthRoute: AuthRoute,
   MarcheRoute: MarcheRoute,
   MethodeRoute: MethodeRoute,
   OrientationRoute: OrientationRoute,
