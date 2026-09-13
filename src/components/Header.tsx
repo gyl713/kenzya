@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
+import { useAuth } from "@/hooks/useAuth";
 
 const links = [
   { to: "/", label: "Accueil" },
@@ -14,6 +15,7 @@ const links = [
 
 export function Header() {
   const [open, setOpen] = useState(false);
+  const { session } = useAuth();
 
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-card/90 backdrop-blur">
@@ -40,10 +42,25 @@ export function Header() {
           ))}
           <Link
             to="/recruteurs"
-            className="ml-2 rounded-lg bg-secondary px-4 py-2 text-sm font-semibold text-secondary-foreground shadow-soft transition-smooth hover:opacity-90"
+            className="ml-2 rounded-lg px-3 py-2 text-sm font-semibold text-muted-foreground transition-smooth hover:bg-muted hover:text-primary"
           >
             Recruteurs
           </Link>
+          {session ? (
+            <Link
+              to="/espace"
+              className="ml-2 rounded-lg bg-secondary px-4 py-2 text-sm font-semibold text-secondary-foreground shadow-soft transition-smooth hover:opacity-90"
+            >
+              Mon espace
+            </Link>
+          ) : (
+            <Link
+              to="/auth"
+              className="ml-2 rounded-lg bg-secondary px-4 py-2 text-sm font-semibold text-secondary-foreground shadow-soft transition-smooth hover:opacity-90"
+            >
+              Connexion
+            </Link>
+          )}
         </nav>
 
         <button
@@ -73,6 +90,13 @@ export function Header() {
             className="block rounded-lg px-3 py-2 text-sm font-semibold text-secondary"
           >
             Recruteurs
+          </Link>
+          <Link
+            to={session ? "/espace" : "/auth"}
+            onClick={() => setOpen(false)}
+            className="block rounded-lg px-3 py-2 text-sm font-semibold text-secondary"
+          >
+            {session ? "Mon espace" : "Connexion"}
           </Link>
         </nav>
       )}

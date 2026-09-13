@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as MarcheRouteImport } from './routes/marche'
 import { Route as MethodeRouteImport } from './routes/methode'
@@ -17,12 +18,17 @@ import { Route as OrientationRouteImport } from './routes/orientation'
 import { Route as ProfilRouteImport } from './routes/profil'
 import { Route as RecruteursRouteImport } from './routes/recruteurs'
 import { Route as TalentsRouteImport } from './routes/talents'
+import { Route as AuthenticatedEspaceRouteImport } from './routes/_authenticated/espace'
 import { Route as OffresIndexRouteImport } from './routes/offres/index'
 import { Route as OffresJobIdRouteImport } from './routes/offres/$jobId'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthenticatedRouteRoute = AuthenticatedRouteRouteImport.update({
+  id: '/_authenticated',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AuthRoute = AuthRouteImport.update({
@@ -60,6 +66,11 @@ const TalentsRoute = TalentsRouteImport.update({
   path: '/talents',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuthenticatedEspaceRoute = AuthenticatedEspaceRouteImport.update({
+  id: '/espace',
+  path: '/espace',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
 const OffresIndexRoute = OffresIndexRouteImport.update({
   id: '/offres/',
   path: '/offres/',
@@ -80,6 +91,7 @@ export interface FileRoutesByFullPath {
   '/profil': typeof ProfilRoute
   '/recruteurs': typeof RecruteursRoute
   '/talents': typeof TalentsRoute
+  '/espace': typeof AuthenticatedEspaceRoute
   '/offres/$jobId': typeof OffresJobIdRoute
   '/offres/': typeof OffresIndexRoute
 }
@@ -92,12 +104,14 @@ export interface FileRoutesByTo {
   '/profil': typeof ProfilRoute
   '/recruteurs': typeof RecruteursRoute
   '/talents': typeof TalentsRoute
+  '/espace': typeof AuthenticatedEspaceRoute
   '/offres/$jobId': typeof OffresJobIdRoute
   '/offres': typeof OffresIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
   '/auth': typeof AuthRoute
   '/marche': typeof MarcheRoute
   '/methode': typeof MethodeRoute
@@ -105,6 +119,7 @@ export interface FileRoutesById {
   '/profil': typeof ProfilRoute
   '/recruteurs': typeof RecruteursRoute
   '/talents': typeof TalentsRoute
+  '/_authenticated/espace': typeof AuthenticatedEspaceRoute
   '/offres/$jobId': typeof OffresJobIdRoute
   '/offres/': typeof OffresIndexRoute
 }
@@ -119,6 +134,7 @@ export interface FileRouteTypes {
     | '/profil'
     | '/recruteurs'
     | '/talents'
+    | '/espace'
     | '/offres/$jobId'
     | '/offres/'
   fileRoutesByTo: FileRoutesByTo
@@ -131,11 +147,13 @@ export interface FileRouteTypes {
     | '/profil'
     | '/recruteurs'
     | '/talents'
+    | '/espace'
     | '/offres/$jobId'
     | '/offres'
   id:
     | '__root__'
     | '/'
+    | '/_authenticated'
     | '/auth'
     | '/marche'
     | '/methode'
@@ -143,12 +161,14 @@ export interface FileRouteTypes {
     | '/profil'
     | '/recruteurs'
     | '/talents'
+    | '/_authenticated/espace'
     | '/offres/$jobId'
     | '/offres/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
   AuthRoute: typeof AuthRoute
   MarcheRoute: typeof MarcheRoute
   MethodeRoute: typeof MethodeRoute
@@ -167,6 +187,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_authenticated': {
+      id: '/_authenticated'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof AuthenticatedRouteRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/auth': {
@@ -218,6 +245,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TalentsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_authenticated/espace': {
+      id: '/_authenticated/espace'
+      path: '/espace'
+      fullPath: '/espace'
+      preLoaderRoute: typeof AuthenticatedEspaceRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
     '/offres/': {
       id: '/offres/'
       path: '/offres'
@@ -235,8 +269,20 @@ declare module '@tanstack/react-router' {
   }
 }
 
+interface AuthenticatedRouteRouteChildren {
+  AuthenticatedEspaceRoute: typeof AuthenticatedEspaceRoute
+}
+
+const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
+  AuthenticatedEspaceRoute: AuthenticatedEspaceRoute,
+}
+
+const AuthenticatedRouteRouteWithChildren =
+  AuthenticatedRouteRoute._addFileChildren(AuthenticatedRouteRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
   AuthRoute: AuthRoute,
   MarcheRoute: MarcheRoute,
   MethodeRoute: MethodeRoute,

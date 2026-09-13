@@ -18,7 +18,9 @@
 - Suivi des retours utilisateurs et statistiques réelles
 
 ## Comptes utilisateurs (demandé le 11/09)
-- [ ] Activer le backend Lovable Cloud
-- [ ] Création de compte + connexion (email/mot de passe et Google)
-- [ ] Choix du type de compte : candidat ou recruteur, stocké dans le profil
-- [ ] Espace connecté : le candidat voit son profil, le recruteur voit ses offres et le sourcing
+- [x] Activer le backend Lovable Cloud
+- [x] Création de compte + connexion (email/mot de passe et Google)
+- [x] Choix du type de compte : candidat ou recruteur, stocké à l'inscription
+- [x] Espace connecté `/espace` : raccourcis candidat ou recruteur selon le type de compte
+- [ ] Enregistrer le vrai profil candidat (compétences, preuves) en base au lieu des profils de démonstration
+- [ ] Permettre à un compte Google de basculer en compte recruteur
