@@ -91,6 +91,13 @@ export function Header() {
           >
             Recruteurs
           </Link>
+          <Link
+            to={session ? "/espace" : "/auth"}
+            onClick={() => setOpen(false)}
+            className="block rounded-lg px-3 py-2 text-sm font-semibold text-secondary"
+          >
+            {session ? "Mon espace" : "Connexion"}
+          </Link>
         </nav>
       )}
     </header>
