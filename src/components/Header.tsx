@@ -42,10 +42,25 @@ export function Header() {
           ))}
           <Link
             to="/recruteurs"
-            className="ml-2 rounded-lg bg-secondary px-4 py-2 text-sm font-semibold text-secondary-foreground shadow-soft transition-smooth hover:opacity-90"
+            className="ml-2 rounded-lg px-3 py-2 text-sm font-semibold text-muted-foreground transition-smooth hover:bg-muted hover:text-primary"
           >
             Recruteurs
           </Link>
+          {session ? (
+            <Link
+              to="/espace"
+              className="ml-2 rounded-lg bg-secondary px-4 py-2 text-sm font-semibold text-secondary-foreground shadow-soft transition-smooth hover:opacity-90"
+            >
+              Mon espace
+            </Link>
+          ) : (
+            <Link
+              to="/auth"
+              className="ml-2 rounded-lg bg-secondary px-4 py-2 text-sm font-semibold text-secondary-foreground shadow-soft transition-smooth hover:opacity-90"
+            >
+              Connexion
+            </Link>
+          )}
         </nav>
 
         <button
