@@ -1,9 +1,17 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useState } from "react";
-import { GraduationCap, RotateCcw } from "lucide-react";
+import { useMemo, useState } from "react";
+import { GraduationCap, RotateCcw, Search } from "lucide-react";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { QUIZ, SECTORS, scoreQuiz } from "@/data/kenzya";
+import {
+  FILIERES,
+  FILIERE_DOMAINS,
+  SCHOOLS,
+  SCHOOL_TYPES,
+  type FiliereDomain,
+  type SchoolType,
+} from "@/data/formations";
 
 export const Route = createFileRoute("/orientation")({
   head: () => ({
