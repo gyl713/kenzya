@@ -159,6 +159,8 @@ function OrientationPage() {
           </div>
         )}
 
+        <Annuaire />
+
         <div className="mt-14">
           <h2 className="font-display text-xl font-bold text-primary">
             Tous les secteurs suivis par KENZYA
