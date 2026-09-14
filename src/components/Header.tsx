@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { useState } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, User, X } from "lucide-react";
 import { useAuth } from "@/hooks/useAuth";
 
 const links = [
@@ -63,13 +63,27 @@ export function Header() {
           )}
         </nav>
 
-        <button
-          className="rounded-lg p-2 text-primary lg:hidden"
-          onClick={() => setOpen((v) => !v)}
-          aria-label="Ouvrir le menu"
-        >
-          {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-        </button>
+        <div className="flex items-center gap-1.5 lg:hidden">
+          <Link
+            to="/profil"
+            className="inline-flex items-center gap-1 rounded-lg border border-border px-2.5 py-2 text-xs font-semibold text-primary transition-smooth hover:bg-muted"
+          >
+            <User className="h-4 w-4" /> Profil
+          </Link>
+          <Link
+            to={session ? "/espace" : "/auth"}
+            className="rounded-lg bg-secondary px-3 py-2 text-xs font-semibold text-secondary-foreground shadow-soft transition-smooth hover:opacity-90"
+          >
+            {session ? "Mon espace" : "Connexion"}
+          </Link>
+          <button
+            className="rounded-lg p-2 text-primary"
+            onClick={() => setOpen((v) => !v)}
+            aria-label="Ouvrir le menu"
+          >
+            {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          </button>
+        </div>
       </div>
 
       {open && (
