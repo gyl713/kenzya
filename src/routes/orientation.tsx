@@ -192,3 +192,152 @@ function Info({ label, value }: { label: string; value: string }) {
     </div>
   );
 }
+
+function Annuaire() {
+  const [query, setQuery] = useState("");
+  const [domain, setDomain] = useState<FiliereDomain | "">("");
+  const [type, setType] = useState<SchoolType | "">("");
+
+  const norm = (s: string) =>
+    s
+      .toLowerCase()
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "");
+  const q = norm(query.trim());
+
+  const filieres = useMemo(
+    () =>
+      FILIERES.filter(
+        (f) =>
+          (!domain || f.domain === domain) &&
+          (!q ||
+            norm(f.name).includes(q) ||
+            norm(f.domain).includes(q) ||
+            f.bacs.some((b) => norm(b).includes(q))),
+      ),
+    [q, domain],
+  );
+
+  const schools = useMemo(
+    () =>
+      SCHOOLS.filter(
+        (s) =>
+          (!domain || s.domains.includes(domain)) &&
+          (!type || s.type === type) &&
+          (!q ||
+            norm(s.name).includes(q) ||
+            norm(s.short ?? "").includes(q) ||
+            norm(s.city).includes(q)),
+      ),
+    [q, domain, type],
+  );
+
+  return (
+    <section className="mt-16">
+      <h2 className="font-display text-2xl font-bold text-primary">
+        Toutes les filières et les établissements de Côte d'Ivoire
+      </h2>
+      <p className="mt-2 max-w-3xl text-sm text-muted-foreground">
+        {FILIERES.length} filières et {SCHOOLS.length} universités et grandes écoles recensées.
+        Cherche par filière, par ville ou par nom d'école. Vérifie toujours les conditions
+        d'admission directement auprès de l'établissement avant de t'inscrire.
+      </p>
+
+      <div className="mt-5 grid gap-3 md:grid-cols-3">
+        <label className="relative md:col-span-1">
+          <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+          <input
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            placeholder="Informatique, Bouaké, INP-HB…"
+            className="w-full rounded-xl border border-border bg-card py-3 pl-10 pr-4 text-sm outline-none transition-smooth focus:border-secondary"
+          />
+        </label>
+        <select
+          value={domain}
+          onChange={(e) => setDomain(e.target.value as FiliereDomain | "")}
+          className="rounded-xl border border-border bg-card px-4 py-3 text-sm outline-none focus:border-secondary"
+        >
+          <option value="">Tous les domaines</option>
+          {FILIERE_DOMAINS.map((d) => (
+            <option key={d} value={d}>
+              {d}
+            </option>
+          ))}
+        </select>
+        <select
+          value={type}
+          onChange={(e) => setType(e.target.value as SchoolType | "")}
+          className="rounded-xl border border-border bg-card px-4 py-3 text-sm outline-none focus:border-secondary"
+        >
+          <option value="">Tous les types d'établissement</option>
+          {SCHOOL_TYPES.map((t) => (
+            <option key={t} value={t}>
+              {t}
+            </option>
+          ))}
+        </select>
+      </div>
+
+      <div className="mt-8 grid gap-8 lg:grid-cols-2">
+        <div>
+          <h3 className="font-display text-lg font-semibold text-primary">
+            Filières ({filieres.length})
+          </h3>
+          <div className="mt-3 space-y-2">
+            {filieres.map((f) => (
+              <div key={f.name} className="rounded-xl border border-border bg-card p-4 shadow-soft">
+                <p className="font-semibold text-foreground">{f.name}</p>
+                <p className="mt-1 text-xs text-muted-foreground">{f.domain}</p>
+                <div className="mt-2 flex flex-wrap gap-1.5">
+                  {f.levels.map((l) => (
+                    <span key={l} className="rounded-lg bg-muted px-2 py-1 text-xs">
+                      {l}
+                    </span>
+                  ))}
+                  <span className="rounded-lg bg-secondary/10 px-2 py-1 text-xs font-semibold text-secondary">
+                    Bac {f.bacs.join(", ")}
+                  </span>
+                </div>
+              </div>
+            ))}
+            {filieres.length === 0 && (
+              <p className="text-sm text-muted-foreground">Aucune filière pour cette recherche.</p>
+            )}
+          </div>
+        </div>
+
+        <div>
+          <h3 className="font-display text-lg font-semibold text-primary">
+            Universités et grandes écoles ({schools.length})
+          </h3>
+          <div className="mt-3 space-y-2">
+            {schools.map((s) => (
+              <div key={s.name} className="rounded-xl border border-border bg-card p-4 shadow-soft">
+                <p className="font-semibold text-foreground">
+                  {s.name}
+                  {s.short ? <span className="text-muted-foreground"> · {s.short}</span> : null}
+                </p>
+                <p className="mt-1 text-xs text-muted-foreground">
+                  {s.city} · {s.type}
+                </p>
+                <div className="mt-2 flex flex-wrap gap-1.5">
+                  {s.domains.map((d) => (
+                    <span key={d} className="rounded-lg bg-muted px-2 py-1 text-xs">
+                      {d}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            ))}
+            {schools.length === 0 && (
+              <p className="text-sm text-muted-foreground">
+                Aucun établissement pour cette recherche.
+              </p>
+            )}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
