@@ -135,7 +135,109 @@ export const FILIERES: Filiere[] = [
   { name: "Topographie et géomètre", domain: "BTP & Architecture", levels: ["BTS", "Licence"], bacs: ["C", "E", "F4"] },
   { name: "Urbanisme et aménagement", domain: "BTP & Architecture", levels: ["Licence", "Master"], bacs: ["A", "C", "D"] },
   { name: "Conduite de travaux et gestion de chantier", domain: "BTP & Architecture", levels: ["BTS", "Licence"], bacs: ["C", "E", "F4"] },
+  { name: "Génie climatique, froid et climatisation", domain: "BTP & Architecture", levels: ["BTS", "Licence"], bacs: ["C", "E", "F3"] },
+  { name: "Métré et économie de la construction", domain: "BTP & Architecture", levels: ["BTS", "Licence"], bacs: ["C", "E", "F4", "G2"] },
+  { name: "Hydraulique et assainissement", domain: "BTP & Architecture", levels: ["BTS", "Licence", "Ingénieur"], bacs: ["C", "D", "E"] },
+  { name: "Décoration d'intérieur et aménagement", domain: "BTP & Architecture", levels: ["BTS", "Licence"], bacs: ["A", "F4"] },
+
+  // Sciences & Technologies (compléments)
+  { name: "Génie chimique et procédés industriels", domain: "Sciences & Technologies", levels: ["Licence", "Ingénieur", "Master"], bacs: ["C", "D", "E"] },
+  { name: "Génie biomédical", domain: "Sciences & Technologies", levels: ["Licence", "Ingénieur"], bacs: ["C", "D", "E"] },
+  { name: "Électronique et systèmes embarqués", domain: "Sciences & Technologies", levels: ["BTS", "Licence", "Ingénieur"], bacs: ["C", "E", "F2"] },
+  { name: "Automatisme et robotique", domain: "Sciences & Technologies", levels: ["Licence", "Ingénieur"], bacs: ["C", "E", "F2", "F3"] },
+  { name: "Développement web et mobile", domain: "Sciences & Technologies", levels: ["BTS", "Licence"], bacs: ["C", "D", "E", "F", "G2"] },
+  { name: "Systèmes d'information et informatique de gestion", domain: "Sciences & Technologies", levels: ["BTS", "Licence", "Master"], bacs: ["C", "D", "G2"] },
+  { name: "Intelligence artificielle appliquée", domain: "Sciences & Technologies", levels: ["Master"], bacs: ["C", "E"] },
+  { name: "Géologie et sciences de la Terre", domain: "Sciences & Technologies", levels: ["Licence", "Master", "Doctorat"], bacs: ["C", "D"] },
+  { name: "Biologie et biochimie", domain: "Sciences & Technologies", levels: ["Licence", "Master", "Doctorat"], bacs: ["C", "D"] },
+  { name: "Biotechnologies", domain: "Sciences & Technologies", levels: ["Licence", "Master"], bacs: ["C", "D"] },
+  { name: "Métrologie, contrôle et instrumentation", domain: "Sciences & Technologies", levels: ["BTS", "Licence"], bacs: ["C", "E", "F2"] },
+  { name: "Maintenance automobile et engins", domain: "Sciences & Technologies", levels: ["BTS", "Licence"], bacs: ["E", "F1", "F2"] },
+  { name: "Imprimerie, packaging et industries graphiques", domain: "Sciences & Technologies", levels: ["BTS"], bacs: ["C", "E", "F"] },
+
+  // Santé (compléments)
+  { name: "Médecine générale", domain: "Santé", levels: ["Doctorat en médecine"], bacs: ["C", "D"] },
+  { name: "Pharmacie", domain: "Santé", levels: ["Doctorat en pharmacie"], bacs: ["C", "D"] },
+  { name: "Chirurgie dentaire / Odontostomatologie", domain: "Santé", levels: ["Doctorat"], bacs: ["C", "D"] },
+  { name: "Soins infirmiers", domain: "Santé", levels: ["Diplôme d'État", "Licence"], bacs: ["C", "D"] },
+  { name: "Sage-femme / Maïeutique", domain: "Santé", levels: ["Diplôme d'État", "Licence"], bacs: ["C", "D"] },
+  { name: "Kinésithérapie et rééducation", domain: "Santé", levels: ["Licence"], bacs: ["C", "D"] },
+  { name: "Analyses biomédicales et laboratoire", domain: "Santé", levels: ["BTS", "Licence"], bacs: ["C", "D"] },
+  { name: "Imagerie médicale et radiologie", domain: "Santé", levels: ["Licence"], bacs: ["C", "D"] },
+  { name: "Santé publique et épidémiologie", domain: "Santé", levels: ["Licence", "Master"], bacs: ["C", "D"] },
+  { name: "Nutrition et diététique", domain: "Santé", levels: ["BTS", "Licence"], bacs: ["C", "D"] },
+  { name: "Médecine vétérinaire", domain: "Santé", levels: ["Doctorat"], bacs: ["C", "D"] },
+  { name: "Gestion des établissements sanitaires", domain: "Santé", levels: ["Licence", "Master"], bacs: ["B", "C", "D", "G2"] },
+  { name: "Psychologie clinique", domain: "Santé", levels: ["Licence", "Master"], bacs: ["A", "B", "D"] },
+
+  // Économie, Gestion & Commerce (compléments)
+  { name: "Comptabilité, contrôle et audit", domain: "Économie, Gestion & Commerce", levels: ["BTS", "Licence", "Master"], bacs: ["B", "G2"] },
+  { name: "Finance et banque", domain: "Économie, Gestion & Commerce", levels: ["Licence", "Master"], bacs: ["B", "C", "G2"] },
+  { name: "Assurance et actuariat", domain: "Économie, Gestion & Commerce", levels: ["Licence", "Master"], bacs: ["B", "C"] },
+  { name: "Microfinance et inclusion financière", domain: "Économie, Gestion & Commerce", levels: ["Licence", "Master"], bacs: ["B", "G2"] },
+  { name: "Gestion des ressources humaines", domain: "Économie, Gestion & Commerce", levels: ["BTS", "Licence", "Master"], bacs: ["A", "B", "G2"] },
+  { name: "Marketing et action commerciale", domain: "Économie, Gestion & Commerce", levels: ["BTS", "Licence", "Master"], bacs: ["A", "B", "G2"] },
+  { name: "Entrepreneuriat et gestion de PME", domain: "Économie, Gestion & Commerce", levels: ["BTS", "Licence", "Master"], bacs: ["A", "B", "G2"] },
+  { name: "Économie et développement", domain: "Économie, Gestion & Commerce", levels: ["Licence", "Master", "Doctorat"], bacs: ["B", "C"] },
+  { name: "Gestion de projet", domain: "Économie, Gestion & Commerce", levels: ["Licence", "Master"], bacs: ["A", "B", "C", "G2"] },
+  { name: "Fiscalité et droit des affaires", domain: "Économie, Gestion & Commerce", levels: ["Licence", "Master"], bacs: ["A", "B", "G2"] },
+  { name: "Secrétariat de direction et assistanat", domain: "Économie, Gestion & Commerce", levels: ["BTS"], bacs: ["A", "B", "G1"] },
+  { name: "Immobilier et gestion de patrimoine", domain: "Économie, Gestion & Commerce", levels: ["BTS", "Licence"], bacs: ["B", "G2"] },
+
+  // Droit & Administration (compléments)
+  { name: "Droit privé", domain: "Droit, Sciences politiques & Administration", levels: ["Licence", "Master", "Doctorat"], bacs: ["A", "B", "D"] },
+  { name: "Droit public", domain: "Droit, Sciences politiques & Administration", levels: ["Licence", "Master", "Doctorat"], bacs: ["A", "B"] },
+  { name: "Droit du numérique et de la propriété intellectuelle", domain: "Droit, Sciences politiques & Administration", levels: ["Master"], bacs: ["A", "B"] },
+  { name: "Sciences politiques et relations internationales", domain: "Droit, Sciences politiques & Administration", levels: ["Licence", "Master"], bacs: ["A", "B"] },
+  { name: "Administration publique et collectivités", domain: "Droit, Sciences politiques & Administration", levels: ["Licence", "Master"], bacs: ["A", "B"] },
+  { name: "Diplomatie et coopération internationale", domain: "Droit, Sciences politiques & Administration", levels: ["Master"], bacs: ["A", "B"] },
+  { name: "Métiers de la sécurité et de la défense", domain: "Droit, Sciences politiques & Administration", levels: ["Licence", "Master"], bacs: ["A", "B", "C", "D"] },
+  { name: "Notariat et professions judiciaires", domain: "Droit, Sciences politiques & Administration", levels: ["Master"], bacs: ["A", "B"] },
+
+  // Lettres, Langues & Sciences humaines (compléments)
+  { name: "Lettres modernes", domain: "Lettres, Langues & Sciences humaines", levels: ["Licence", "Master", "Doctorat"], bacs: ["A"] },
+  { name: "Anglais / Études anglophones", domain: "Lettres, Langues & Sciences humaines", levels: ["Licence", "Master"], bacs: ["A", "B"] },
+  { name: "Espagnol, allemand et langues vivantes", domain: "Lettres, Langues & Sciences humaines", levels: ["Licence", "Master"], bacs: ["A"] },
+  { name: "Traduction et interprétariat", domain: "Lettres, Langues & Sciences humaines", levels: ["Licence", "Master"], bacs: ["A", "B"] },
+  { name: "Histoire et archéologie", domain: "Lettres, Langues & Sciences humaines", levels: ["Licence", "Master", "Doctorat"], bacs: ["A", "B"] },
+  { name: "Géographie et aménagement du territoire", domain: "Lettres, Langues & Sciences humaines", levels: ["Licence", "Master"], bacs: ["A", "B", "D"] },
+  { name: "Sociologie et anthropologie", domain: "Lettres, Langues & Sciences humaines", levels: ["Licence", "Master"], bacs: ["A", "B"] },
+  { name: "Philosophie", domain: "Lettres, Langues & Sciences humaines", levels: ["Licence", "Master"], bacs: ["A"] },
+  { name: "Documentation, archives et bibliothéconomie", domain: "Lettres, Langues & Sciences humaines", levels: ["Licence", "Master"], bacs: ["A", "B"] },
+  { name: "Travail social et action humanitaire", domain: "Lettres, Langues & Sciences humaines", levels: ["Licence", "Master"], bacs: ["A", "B", "D"] },
+
+  // Agriculture, Environnement & Mines (compléments)
+  { name: "Agronomie générale", domain: "Agriculture, Environnement & Mines", levels: ["Licence", "Ingénieur", "Master"], bacs: ["C", "D"] },
+  { name: "Agroéconomie et gestion d'exploitation", domain: "Agriculture, Environnement & Mines", levels: ["Licence", "Master"], bacs: ["B", "C", "D"] },
+  { name: "Industries agroalimentaires et qualité", domain: "Agriculture, Environnement & Mines", levels: ["BTS", "Licence", "Ingénieur"], bacs: ["C", "D"] },
+  { name: "Productions animales et élevage", domain: "Agriculture, Environnement & Mines", levels: ["BTS", "Licence"], bacs: ["C", "D"] },
+  { name: "Aquaculture et pêche", domain: "Agriculture, Environnement & Mines", levels: ["BTS", "Licence"], bacs: ["C", "D"] },
+  { name: "Eaux, forêts et biodiversité", domain: "Agriculture, Environnement & Mines", levels: ["Licence", "Ingénieur"], bacs: ["C", "D"] },
+  { name: "Sciences de l'environnement et gestion des déchets", domain: "Agriculture, Environnement & Mines", levels: ["Licence", "Master"], bacs: ["C", "D"] },
+  { name: "Mines, géologie minière et carrières", domain: "Agriculture, Environnement & Mines", levels: ["Licence", "Ingénieur", "Master"], bacs: ["C", "D", "E"] },
+  { name: "Agriculture numérique et machinisme agricole", domain: "Agriculture, Environnement & Mines", levels: ["BTS", "Licence"], bacs: ["C", "D", "E"] },
+
+  // Communication, Arts & Design (compléments)
+  { name: "Relations publiques et événementiel", domain: "Communication, Arts & Design", levels: ["BTS", "Licence"], bacs: ["A", "B", "G2"] },
+  { name: "Photographie et création numérique", domain: "Communication, Arts & Design", levels: ["BTS", "Licence"], bacs: ["A", "F"] },
+  { name: "Animation 2D/3D et jeux vidéo", domain: "Communication, Arts & Design", levels: ["BTS", "Licence"], bacs: ["A", "C", "F"] },
+  { name: "Mode, stylisme et textile", domain: "Communication, Arts & Design", levels: ["BTS", "Licence"], bacs: ["A", "F"] },
+  { name: "Métiers du livre et de l'édition", domain: "Communication, Arts & Design", levels: ["Licence"], bacs: ["A"] },
+
+  // Transport, Logistique & Tourisme (compléments)
+  { name: "Supply chain et achats", domain: "Transport, Logistique & Tourisme", levels: ["Licence", "Master"], bacs: ["B", "C", "G2"] },
+  { name: "Transit et transport routier", domain: "Transport, Logistique & Tourisme", levels: ["BTS", "Licence"], bacs: ["A", "B", "G2"] },
+  { name: "Navigation maritime et machines marines", domain: "Transport, Logistique & Tourisme", levels: ["BTS", "Licence"], bacs: ["C", "D", "E"] },
+  { name: "Restauration, arts culinaires et hébergement", domain: "Transport, Logistique & Tourisme", levels: ["BTS", "Licence"], bacs: ["A", "B", "G2"] },
+  { name: "Guide touristique et gestion du patrimoine", domain: "Transport, Logistique & Tourisme", levels: ["BTS", "Licence"], bacs: ["A", "B"] },
+
+  // Éducation & Formation (compléments)
+  { name: "Éducation préscolaire et petite enfance", domain: "Éducation & Formation", levels: ["Diplôme professionnel", "Licence"], bacs: ["A", "B", "D"] },
+  { name: "Ingénierie de la formation et e-learning", domain: "Éducation & Formation", levels: ["Master"], bacs: ["A", "B", "C", "D"] },
+  { name: "Encadrement sportif et management du sport", domain: "Éducation & Formation", levels: ["Licence", "Master"], bacs: ["A", "B", "C", "D"] },
+  { name: "Éducation spécialisée et inclusion", domain: "Éducation & Formation", levels: ["Licence"], bacs: ["A", "B", "D"] },
 ];
+
 
 export const SCHOOLS: School[] = [
   // Universités publiques
